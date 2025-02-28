@@ -1,5 +1,5 @@
 # Proyecto de Pruebas de Automatización de UrbanRoutes
-#Autor: Wilmer Andres Otalvaro Gutierrez
+# Autor: Wilmer Andres Otalvaro Gutierrez
 ## Descripción
 
 Este proyecto contiene un conjunto de pruebas automatizadas para la aplicación UrbanRoutes. Utiliza Selenium WebDriver para interactuar con la aplicación y verificar diversas funcionalidades, como establecer rutas, seleccionar tarifas, ingresar números de teléfono, agregar tarjetas de pago y más.
