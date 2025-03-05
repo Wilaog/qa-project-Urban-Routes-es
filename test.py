@@ -4,6 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+
+from data import urban_routes_url
 from main import UrbanRoutesPage
 
 class TestUrbanRoutes:
@@ -24,8 +26,8 @@ class TestUrbanRoutes:
         address_to = data.address_to
         routes_page.set_from(address_from)
         routes_page.set_to(address_to)
-        assert routes_page.get_from() == address_from
-        assert routes_page.get_to() == address_to
+        assert routes_page.get_from() == address_from, f"Se esperaba '{address_from}', pero se obtuvo '{routes_page.get_from()}'"
+        assert routes_page.get_to() == address_to, f"Se esperaba '{address_to}', pero se obtuvo '{routes_page.get_to()}'"
 
     def test_select_comfort_rate(self):
         self.driver.get(data.urban_routes_url)
@@ -37,6 +39,8 @@ class TestUrbanRoutes:
         routes_page.set_to(address_to)
         # Seleccionar la tarifa Comfort
         routes_page.select_comfort_rate()
+        assert routes_page.select_comfort_rate() == routes_page.comfort_option, f"Se esperaba '{routes_page.comfort_option}', pero se obtuvo '{routes_page.select_comfort_rate()}'"
+
 
     def test_fill_phone_number(self):
         self.driver.get(data.urban_routes_url)
@@ -57,6 +61,7 @@ class TestUrbanRoutes:
         time.sleep(2)
         routes_page.fill_sms_code()
         time.sleep(5)
+
 
     def test_add_card(self):
         self.test_fill_phone_number()
@@ -90,6 +95,7 @@ class TestUrbanRoutes:
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.share_taxi()
         time.sleep(10)
+
     @classmethod
     def teardown_class(cls):
         cls.driver.quit()

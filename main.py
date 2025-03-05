@@ -142,3 +142,4 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.button_taxi))
         tax_button = self.driver.find_element(*self.button_taxi)
         tax_button.click()
+
